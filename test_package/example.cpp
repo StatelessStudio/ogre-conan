@@ -1,6 +1,6 @@
 #include <iostream>
-#include "hello.h"
+#include <OGRE/Ogre.h>
 
 int main() {
-    hello();
+    std::cout << "Hello Ogre" << std::endl;
 }
