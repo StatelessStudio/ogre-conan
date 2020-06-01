@@ -4,11 +4,11 @@ from conans import ConanFile, CMake, tools
 class OgreConan(ConanFile):
     name = "ogre"
     version = "1.12.6"
-    license = "<Put the package license here>"
-    author = "<Put your name here> <And your email here>"
-    url = "<Package recipe repository url here, for issues about the package>"
-    description = "<Description of Ogre here>"
-    topics = ("<Put some tag here>", "<here>", "<and here>")
+    license = "MIT"
+    author = "StatelessStudio drew@stateless.studio"
+    url = "https://github.com/statelessstudio/ogre-conan"
+    description = "3D Graphics Rendering Engine"
+    topics = ("graphics", "3d", "3d graphics", "rendering")
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
     default_options = {"shared": False}
