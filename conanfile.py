@@ -40,5 +40,21 @@ class OgreConan(ConanFile):
         self.copy("*.a", dst="lib", keep_path=False)
 
     def package_info(self):
+        self.cpp_info.includedirs = [
+            'include',
+            'include/OGRE',
+            'include/OGRE/Bites',
+            'include/OGRE/HLMS',
+            'include/OGRE/MeshLodGenerator',
+            'include/OGRE/Overlay',
+            'include/OGRE/Paging',
+            'include/OGRE/Plugins',
+            'include/OGRE/Property',
+            'include/OGRE/RenderSystems',
+            'include/OGRE/RTShaderSystem',
+            'include/OGRE/Terrain',
+            'include/OGRE/Threading',
+            'include/OGRE/Volume'
+        ]
         self.cpp_info.libs = tools.collect_libs(self)
 
