@@ -14,13 +14,13 @@ class OgreConan(ConanFile):
     default_options = {"shared": False}
     generators = "cmake"
 
-    ogre_version_commit="c1ead4007d6f5552bacd9934a289e4f78b8ecbc2"
+    _ogre_version_commit="c1ead4007d6f5552bacd9934a289e4f78b8ecbc2"
 
     def source(self):
         self.run("git clone C:/Users/Drew/Dev/ogre")
 
         print("Checking out version " + self.version + "...")
-        self.run("cd ogre && git reset --hard " + self.ogre_version_commit)
+        self.run("cd ogre && git reset --hard " + self._ogre_version_commit)
 
         print("Checking out submodules...")
         self.run("cd ogre && git submodule update --init --recursive")
