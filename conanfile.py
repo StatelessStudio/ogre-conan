@@ -58,3 +58,6 @@ class OgreConan(ConanFile):
         ]
         self.cpp_info.libs = tools.collect_libs(self)
 
+    def deploy(self):
+        self.output.success("Copying files! (deploy)")
+        self.copy("*", dst="bin", src="bin")
