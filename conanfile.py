@@ -10,8 +10,18 @@ class OgreConan(ConanFile):
     description = "3D Graphics Rendering Engine"
     topics = ("graphics", "3d", "3d graphics", "rendering")
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False]}
-    default_options = {"shared": False}
+    options = {
+        "shared": [True, False],
+        "ogre_cp_bin_dir": "ANY",
+        "ogre_cp_media_dir": "ANY"
+    }
+
+    default_options = {
+        "shared": False,
+        "ogre_cp_bin_dir": "bin",
+        "ogre_cp_media_dir": "Media"
+    }
+
     generators = "cmake"
 
     _ogre_version_commit="c1ead4007d6f5552bacd9934a289e4f78b8ecbc2"
@@ -59,5 +69,10 @@ class OgreConan(ConanFile):
         self.cpp_info.libs = tools.collect_libs(self)
 
     def deploy(self):
-        self.output.success("Copying files! (deploy)")
-        self.copy("*", dst="bin", src="bin")
+        self.output.success("Copying OGRE files!")
+
+        if self.options.ogre_cp_bin_dir:
+            self.copy("*", dst=str(self.options.ogre_cp_bin_dir), src="bin")
+
+        if self.options.ogre_cp_media_dir:
+            self.copy("*", dst=str(self.options.ogre_cp_media_dir), src="Media")
