@@ -24,10 +24,11 @@ class OgreConan(ConanFile):
 
     generators = "cmake"
 
+    _ogre_source_uri="https://github.com/OGRECave/ogre"
     _ogre_version_commit="c1ead4007d6f5552bacd9934a289e4f78b8ecbc2"
 
     def source(self):
-        self.run("git clone C:/Users/Drew/Dev/ogre")
+        self.run("git clone " + self._ogre_source_uri)
 
         print("Checking out version " + self.version + "...")
         self.run("cd ogre && git reset --hard " + self._ogre_version_commit)
