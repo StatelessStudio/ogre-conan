@@ -51,6 +51,10 @@ If you'd like to change the `bin/` or `Media/` directory, or set a custom build 
 conan install ogre/1.12.6@demo/testing --build ogre -o ogre:cp_bin_dir=build/x64-Release -o ogre:cp_media_dir=build/Media
 ```
 
+### Why doesn't installing with a conanfile copy the bin & media directories?
+
+See [this conan.io issue](https://github.com/conan-io/conan/issues/7126#issuecomment-637029596)
+
 ## Step 3 - Option 2 - Add to conanfile.txt
 
 If you don't need the `Media/` directory, and would rather copy the bin folder contents (`.dll`s, Ogre Tools, etc) manually, you can install Ogre without:
