@@ -127,8 +127,8 @@ class OgreConan(ConanFile):
         "OPENEXR_IlmThread_LIBRARY": "OPENEXR_IlmThread_LIBRARY-NOTFOUND",
         "OPENEXR_IlmThread_LIBRARY_DEBUG": "OPENEXR_IlmThread_LIBRARY_DEBUG-NOTFOUND",
         "Qt5_DIR": "Qt5_DIR-NOTFOUND",
-        "SDL2_DIR": "TODO:/ogre/build/Dependencies/cmake",
-        "pugixml_DIR": "TODO:/ogre/build/Dependencies/lib/cmake/pugixml"
+        "SDL2_DIR": "${ogre-build-dir}/Dependencies/cmake",
+        "pugixml_DIR": "${ogre-build-dir}/Dependencies/lib/cmake/pugixml"
     }
 
     generators = "cmake"
@@ -170,6 +170,10 @@ class OgreConan(ConanFile):
                 value = "ON"
             elif value is False or value == "False":
                 value = "OFF"
+
+            substrpos = value.find('${ogre-build-dir}')
+            if substrpos >= 0:
+                value = value.replace('${ogre-build-dir}', self.build_folder)
 
             cmake.definitions[key] = value
             print("Setting cmake [" + key + "] to \"" + value + "\"")
