@@ -1,4 +1,5 @@
 from conans import ConanFile, CMake, tools
+from conans.tools import os_info, SystemPackageTool
 
 
 class OgreConan(ConanFile):
@@ -134,6 +135,15 @@ class OgreConan(ConanFile):
 
     _ogre_source_uri="https://github.com/OGRECave/ogre"
     _ogre_version_commit="c1ead4007d6f5552bacd9934a289e4f78b8ecbc2"
+
+    def system_requirements(self):
+        if os_info.is_linux:
+            installer = SystemPackageTool()
+            installer.install("libgles2-mesa-dev")
+            installer.install("libxt-dev")
+            installer.install("libxaw7-dev")
+            installer.install("nvidia-cg-toolkit")
+            installer.install("libsdl2-dev")
 
     def source(self):
         self.run("git clone " + self._ogre_source_uri)
