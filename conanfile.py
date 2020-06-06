@@ -12,14 +12,14 @@ class OgreConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     options = {
         "shared": [True, False],
-        "ogre_cp_bin_dir": "ANY",
-        "ogre_cp_media_dir": "ANY"
+        "cp_bin_dir": "ANY",
+        "cp_media_dir": "ANY"
     }
 
     default_options = {
         "shared": False,
-        "ogre_cp_bin_dir": "bin",
-        "ogre_cp_media_dir": "Media"
+        "cp_bin_dir": "bin",
+        "cp_media_dir": "Media"
     }
 
     generators = "cmake"
@@ -72,8 +72,8 @@ class OgreConan(ConanFile):
     def deploy(self):
         self.output.success("Copying OGRE files!")
 
-        if self.options.ogre_cp_bin_dir:
-            self.copy("*", dst=str(self.options.ogre_cp_bin_dir), src="bin")
+        if self.options.cp_bin_dir:
+            self.copy("*", dst=str(self.options.cp_bin_dir), src="bin")
 
-        if self.options.ogre_cp_media_dir:
-            self.copy("*", dst=str(self.options.ogre_cp_media_dir), src="Media")
+        if self.options.cp_media_dir:
+            self.copy("*", dst=str(self.options.cp_media_dir), src="Media")
