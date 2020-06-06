@@ -13,6 +13,8 @@ class OgreConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     options = {
         "shared": [True, False],
+        "source_uri": "ANY",
+        "version_commit": "ANY",
         "cp_bin_dir": "ANY",
         "cp_media_dir": "ANY",
         "disable_plugins": [True, False],
@@ -73,6 +75,8 @@ class OgreConan(ConanFile):
 
     default_options = {
         "shared": False,
+        "source_uri": "https://github.com/OGRECave/ogre",
+        "version_commit": "c1ead4007d6f5552bacd9934a289e4f78b8ecbc2", # v1.12.6
         "cp_bin_dir": "bin",
         "cp_media_dir": "Media",
         "disable_plugins": False,
@@ -133,9 +137,6 @@ class OgreConan(ConanFile):
 
     generators = "cmake"
 
-    _ogre_source_uri="https://github.com/OGRECave/ogre"
-    _ogre_version_commit="c1ead4007d6f5552bacd9934a289e4f78b8ecbc2"
-
     def system_requirements(self):
         if os_info.is_linux:
             installer = SystemPackageTool()
@@ -146,10 +147,14 @@ class OgreConan(ConanFile):
             installer.install("libsdl2-dev")
 
     def source(self):
-        self.run("git clone " + self._ogre_source_uri)
+        self.run("git clone " + str(self.options.source_uri))
 
-        print("Checking out version " + self.version + "...")
-        self.run("cd ogre && git reset --hard " + self._ogre_version_commit)
+        if self.options.version_commit:
+            print("Checking out version " + self.version + "...")
+            self.run(
+                "cd ogre && git reset --hard " +
+                str(self.options.version_commit)
+            )
 
         print("Checking out submodules...")
         self.run("cd ogre && git submodule update --init --recursive")
