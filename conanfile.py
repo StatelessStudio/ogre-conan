@@ -4,7 +4,7 @@ from conans.tools import os_info, SystemPackageTool
 
 class OgreConan(ConanFile):
     name = "ogre"
-    version = "1.12.6"
+    version = "1.12.7"
     license = "MIT"
     author = "StatelessStudio drew@stateless.studio"
     url = "https://github.com/statelessstudio/ogre-conan"
@@ -76,7 +76,7 @@ class OgreConan(ConanFile):
     default_options = {
         "shared": False,
         "source_uri": "https://github.com/OGRECave/ogre",
-        "version_commit": "c1ead4007d6f5552bacd9934a289e4f78b8ecbc2", # v1.12.6
+        "version_commit": "8ff1a4046716244fc4b3a3e44e5b6abeda755b0a", # v1.12.7
         "cp_bin_dir": "bin",
         "cp_media_dir": "Media",
         "disable_plugins": False,
