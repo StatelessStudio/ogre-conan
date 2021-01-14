@@ -40,7 +40,7 @@ If you'd rather copy the `bin/` and `Media/` directories yourself, you can skip 
 In addition to building Ogre & it's dependencies, this will also add the `bin/` and example `Media/` directory to your project.
 
 ```
-conan install ogre/1.12.7@demo/testing --build ogre
+conan install ogre/1.12.10@demo/testing --build ogre
 ```
 
 ### Custom bin directory
@@ -48,7 +48,7 @@ conan install ogre/1.12.7@demo/testing --build ogre
 If you'd like to change the `bin/` or `Media/` directory, or set a custom build directory, you can pass directoreis to the `ogre:cp_bin_dir` and `ogre:cp_media_dir` options:
 
 ```
-conan install ogre/1.12.7@demo/testing --build ogre -o ogre:cp_bin_dir=build/x64-Release -o ogre:cp_media_dir=build/Media
+conan install ogre/1.12.10@demo/testing --build ogre -o ogre:cp_bin_dir=build/x64-Release -o ogre:cp_media_dir=build/Media
 ```
 
 ### Why doesn't installing with a conanfile copy the bin & media directories?
@@ -63,7 +63,7 @@ Add the following to a root-level `conanfile.txt`:
 
 ```
 [requires]
-ogre/1.12.7@demo/testing
+ogre/1.12.10@demo/testing
 
 [options]
 
@@ -80,7 +80,7 @@ Then run the following:
 
 ### Manually copying bin & media
 
-If you skipped step 3, the bin and media directory are all there, they just haven't been copied to your project. You can find these in `~/.conan/data/ogre/1.12.7/demo/testing/package/SOMEHASH/` or `C:/Users/SOMEUSERNAME/.conan/data/...` on Windows.
+If you skipped step 3, the bin and media directory are all there, they just haven't been copied to your project. You can find these in `~/.conan/data/ogre/1.12.10/demo/testing/package/SOMEHASH/` or `C:/Users/SOMEUSERNAME/.conan/data/...` on Windows.
 
 ## Next steps
 
@@ -100,13 +100,13 @@ Besides a few exceptions, you can set nearly all of Ogre's cmake options. We've 
 
 **Not all options have been tested. Please [report any issues](https://github.com/StatelessStudio/ogre-conan/issues) you find!**
 
-The options match ogre's cmake names exactly. You can browse all of the options with the command `conan inspect ogre/1.12.7@demo/testing`
+The options match ogre's cmake names exactly. You can browse all of the options with the command `conan inspect ogre/1.12.10@demo/testing`
 
 ### CLI Method (Option 1 above)
 
 If you are using option 1 above, pass additional `-o ogre:` parameters to the command:
 
-`conan install ogre/1.12.7@demo/testing --build ogre -o ogre:OGRE_BUILD_COMPONENT_BITES=False -o ogre:Qt5_DIR=C:/qt5/`
+`conan install ogre/1.12.10@demo/testing --build ogre -o ogre:OGRE_BUILD_COMPONENT_BITES=False -o ogre:Qt5_DIR=C:/qt5/`
 
 ### Conanfile.txt Method (Option 2 above)
 
@@ -115,7 +115,7 @@ If you are using option 2 above, add the options to your conanfile before you bu
 `conanfile.txt`
 ```
 [requires]
-ogre/1.12.7@demo/testing
+ogre/1.12.10@demo/testing
 
 [options]
 ogre:BUILD_COMPONENT_BITES=False
